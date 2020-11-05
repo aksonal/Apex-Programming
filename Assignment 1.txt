@@ -1,0 +1,18 @@
+//apex program to store all the numbers in the list starting from 1 until 20. Only numbers stored at even positions in the list should be added to get their sum which will be output in debug  log
+
+List<Integer> Listvals = new List<Integer>();
+for(Integer i=1; i<=20; i++)
+{
+    Listvals.add(i);
+}
+System.debug('Display List Elements: '+Listvals);
+system.debug('total elements in list: '+Listvals.size());
+
+//Sum of even position numbers from the list  
+Integer sum = 0;
+for(Integer i=1; i<=Listvals.size(); i=i+2)
+{
+    sum = sum + Listvals[i];
+    system.debug('Sum: '+sum);      
+}
+System.debug('Total sum: '+sum);

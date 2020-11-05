@@ -1,0 +1,32 @@
+//Assignment
+//In this example, we will be fetching the invoices created today and have //the status as Paid.
+
+//create a list to store all the invoices
+List<APEX_Invoice__c> allInvoices = new List<APEX_Invoice__c>();
+
+// SOQL query which will fetch the invoice records which has been created today/specific date
+allInvoices = [select Name,Invoice_Number__c, Invoice_Title__c, Status__c from
+               APEX_Invoice__c where Created_Date__c = 2020-11-04];
+
+//display all records
+system.debug('All Invoices of list which were created today: '+allInvoices);
+
+//create a List to store the Invoice Number of Paid invoices
+List<string> InvoiceNumberList = new List<string>();
+
+// This loop will iterate on the List allInvoices and will process each 
+//record
+for (APEX_Invoice__c objInvoice: allInvoices) {
+   
+   // Condition to check the current record in context values
+   if (objInvoice.Status__c == 'Paid') {
+      
+      // current record on which loop is iterating
+      System.debug('Value of Current Record on which Loop is iterating is'+objInvoice);
+      
+      // if Status value is paid then it will the invoice number into List of String
+      InvoiceNumberList.add(objInvoice.Name);
+   }
+}
+
+System.debug('Value of InvoiceNumberList '+InvoiceNumberList);

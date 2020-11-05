@@ -1,0 +1,21 @@
+//Assignment: you’ll fetch all the records of the invoice object. Then //update the description field of any 3 invoices of the list.
+
+//list to store all invoice object records
+List<APEX_Invoice__c> records = new List<APEX_Invoice__c>();
+
+//SOQL query to fetch all invoice records and store in records variable created above
+records = [select Created_Date__c,APEX_Description__c,Name,Invoice_Number__c,Invoice_Title__c,Status__c from APEX_Invoice__c];
+
+//update record
+integer i=1;
+while(i <= 3)
+{
+    records[i].APEX_Description__c = 'This is '+ i +' invoice record';
+    system.debug('Updated description: '+records[i].APEX_Description__c);
+    i++;
+   
+}
+update records;
+
+//to display updated records
+//system.debug('Updated Records: '+records);

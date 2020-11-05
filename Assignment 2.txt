@@ -1,0 +1,39 @@
+//Apex class to calculate addition or multiplication based on input received
+
+public class MathCalculator 
+{
+    private static integer add(integer a, integer b)
+    {
+        return a+b ;
+    }
+    
+    private static integer multiply(integer a , integer b)
+    {
+        return a*b;
+    }
+    
+    private static void printOutput(integer output)
+    {
+        system.debug('Output is: '+output);
+    }
+    
+    public void doMath(integer a, integer b, String operator)
+    {
+        integer value = 0;
+        
+        if(operator == '+')
+        {
+            value = add(a,b);
+        }
+        
+        else if(operator == '*')
+        {
+            value = multiply(a,b);
+        }
+        
+        printOutput(value);
+        
+        
+    }
+
+}

@@ -1,0 +1,48 @@
+//Assignment: Invoices which have been created today and have 
+//their status as 'Pending'/'Unpaid', should be updated to 'Paid'.
+
+// List to store all records
+List<APEX_Invoice__c> lst = new List<APEX_Invoice__c>();
+
+//SOQL Query
+lst = [Select Name,APEX_Description__c,Invoice_Number__c,
+       Invoice_Title__c,Status__c from APEX_Invoice__c where 
+       Created_Date__c = 2020-11-05 AND Status__c = 'Unpaid'];
+
+//loop for all records in 'lst' List
+for (APEX_Invoice__c allRecords : lst )
+{
+    allRecords.Status__c = 'Paid';   
+}
+
+update lst;
+System.debug('Record has been Updated as: '+lst);
+
+
+-----------------------------------OR----------------------------------------
+
+//Assignment: Invoices which have been created today and have 
+//their status as 'Pending'/'Unpaid', should be updated to 'Paid'.
+
+// List to store all records
+List<APEX_Invoice__c> lst = new List<APEX_Invoice__c>();
+
+//SOQL Query
+lst = [Select Name,APEX_Description__c,Invoice_Number__c,
+       Invoice_Title__c,Status__c from APEX_Invoice__c where 
+       Created_Date__c = 2020-11-05 AND Status__c = 'Unpaid'];
+
+//empty list to store new updated records
+List<APEX_Invoice__c> FinalLst = new List<APEX_Invoice__c>();
+
+//loop for all records in 'lst' List
+for (APEX_Invoice__c allRecords : lst )
+{
+    allRecords.Status__c = 'Paid';
+    FinalLst.add(allRecords);   
+    system.debug('final list: '+FinalLst);
+}
+
+update FinalLst;
+system.debug('final list: '+FinalLst);
+

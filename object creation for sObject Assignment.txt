@@ -1,0 +1,15 @@
+// Custom sObject initialization and assignment of values to field
+APEX_Invoice__c obj = new APEX_Invoice__c ();
+
+obj.APEX_Description__c = 'Types of food items purchased';
+obj.Invoice_Title__c = 'Food Products';
+
+//date
+Date myDate = date.newInstance(2020,11,05);
+obj.Created_Date__c = myDate;
+obj.Invoice_Number__c = 110;
+obj.Status__c = 'Unpaid';
+
+insert obj; //DML operation i.e insert a new entry in invoice object
+System.debug('Record has been inserted: '+obj);
+
